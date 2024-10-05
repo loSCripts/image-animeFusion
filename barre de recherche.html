@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recherche d'animés</title>
+    <style>
+        .search-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 50px;
+        }
+        input[type="text"] {
+            width: 300px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .suggestions {
+            width: 300px;
+            border: 1px solid #ccc;
+            border-top: none;
+            border-radius: 0 0 4px 4px;
+            max-height: 150px;
+            overflow-y: auto;
+            background-color: white;
+        }
+        .suggestion-item {
+            padding: 10px;
+            cursor: pointer;
+        }
+        .suggestion-item:hover {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Rechercher un animé..." oninput="showSuggestions()">
+        <div id="suggestions" class="suggestions"></div>
+    </div>
+
+    <script>
+        const animeList = [
+            { name: 'One Piece', url: 'https://example.com/one-piece' },
+            { name: 'Demon Slayer', url: 'https://example.com/demon-slayer' },
+            { name: 'Naruto', url: 'https://example.com/naruto' }
+        ];
+
+        function showSuggestions() {
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            const suggestionsContainer = document.getElementById('suggestions');
+            suggestionsContainer.innerHTML = '';
+
+            if (input) {
+                const filteredAnimes = animeList.filter(anime => anime.name.toLowerCase().includes(input));
+                filteredAnimes.forEach(anime => {
+                    const suggestionItem = document.createElement('div');
+                    suggestionItem.className = 'suggestion-item';
+                    suggestionItem.textContent = anime.name;
+                    suggestionItem.onclick = () => {
+                        window.location.href = anime.url;
+                    };
+                    suggestionsContainer.appendChild(suggestionItem);
+                });
+            }
+        }
+    </script>
+</body>
+</html>
+
+
