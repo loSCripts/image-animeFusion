@@ -60,7 +60,7 @@
                     suggestionItem.className = 'suggestion-item';
                     suggestionItem.textContent = anime.name;
                     suggestionItem.onclick = () => {
-                        window.location.href = anime.url;
+                        window.open(anime.url, '_blank');
                     };
                     suggestionsContainer.appendChild(suggestionItem);
                 });
@@ -69,3 +69,4 @@
     </script>
 </body>
 </html>
+
