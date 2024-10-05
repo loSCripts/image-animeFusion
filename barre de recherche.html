@@ -54,7 +54,7 @@
             suggestionsContainer.innerHTML = '';
 
             if (input) {
-                const filteredAnimes = animeList.filter(anime => anime.name.toLowerCase().includes(input));
+                const filteredAnimes = animeList.filter(anime => anime.name.toLowerCase().startsWith(input));
                 filteredAnimes.forEach(anime => {
                     const suggestionItem = document.createElement('div');
                     suggestionItem.className = 'suggestion-item';
@@ -69,5 +69,4 @@
     </script>
 </body>
 </html>
-
 
